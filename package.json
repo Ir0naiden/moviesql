@@ -1,0 +1,26 @@
+{
+  "name": "moviesql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "start": "node src/app.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mysql2": "^2.2.5",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ir0naiden/moviesql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ir0naiden/moviesql/issues"
+  },
+  "homepage": "https://github.com/Ir0naiden/moviesql#readme"
+}

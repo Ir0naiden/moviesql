@@ -27,47 +27,24 @@ exports.addMovie = (title, actor, rating, category, username) => {
   }
 };
 
-// exports.moviesList = (user) => {
-//   const list = [user];
-//   try {
-//     sql.query(
-//       "SELECT userID,GROUP_CONCAT(title) FROM movies GROUP BY userID WHERE userID = (SELECT id FROM users WHERE username = ?)",
-//       list
-//     );
-//     console.log(`${list} has added ${row.movieList} to their watchlist`);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// exports.moviesList = async (username, pass) => {
-//   try {
-//       const user = [username, pass];
-//       sql.query("SELECT title, actor, watched, rating, genre, director FROM movies INNER JOIN users ON movies.movieID = movies.userID WHERE userID = (SELECT id FROM users INNER JOIN passwords ON users.id = passwords.userID WHERE users.username = ? AND passwords.pass = ?)", user, (error, results) => {
-//           if (error) return console.error(error);
-//          else console.log(results)})
-//   } catch (error) {
-//       console.log(error)
-//   }
-// }
-
-// exports.moviesList = (user) => {
-//   const list = [user];
-//   try {
-//     sql.query(
-//       "SELECT count(*) AS movieList FROM movies WHERE userID = (SELECT id FROM users WHERE username = ?);",
-//       list,
-//       (err, results, fields) => {
-//         Object.keys(results).forEach((key) => {
-//           let row = results[key];
-//           console.log(`${list} has added ${row.movieList} movies`);
-//         });
-//       }
-//     );
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// node src/app.js "list" --user "<userName>""
+exports.moviesList = async (username) => {
+  const user = [username];
+  try {
+    sql.query(
+      "SELECT title FROM movies WHERE userID = (SELECT id FROM users WHERE users.username = ?)",
+      user,
+      (error, results) => {
+        if (error) {
+          console.error(error);
+        }
+        console.log(results);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // node src/app.js "update movie" --watched "<boolean>" --rating <Number> --title "<movieName>" --user "<userName>" --pass "<password>"
 exports.updateMovie = (watched, rating, title, user, pass) => {
